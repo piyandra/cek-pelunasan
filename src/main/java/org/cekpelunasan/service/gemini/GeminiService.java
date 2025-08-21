@@ -27,9 +27,9 @@ public class GeminiService {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(request, headers);
 		ResponseEntity<Map> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Map.class);
-		Map candidate = ((List<Map>) ((Map) response.getBody()).get("candidates")).get(0);
+		Map candidate = ((List<Map>) response.getBody().get("candidates")).getFirst();
 		Map content = (Map) candidate.get("content");
 		List<Map> parts = (List<Map>) content.get("parts");
-		return (String) parts.get(0).get("text");
+		return (String) parts.getFirst().get("text");
 	}
 }

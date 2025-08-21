@@ -35,7 +35,6 @@ public class TelegramBot {
 		}
 		if (update.getMessage().hasPhoto()) {
 			pengakuanTransferHandle.handle(update, telegramClient);
-			return;
 		}
 
 	}
